@@ -1,0 +1,23 @@
+---
+import { getEntry, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { UI } from "../../utils/i18n";
+
+const lang = "en";
+const copy = UI[lang].pages.misc;
+const miscEntry = await getEntry("misc", lang);
+const { Content: MiscContent } = miscEntry
+    ? await render(miscEntry)
+    : { Content: null };
+---
+
+<BaseLayout title={copy.title} lang={lang}>
+    <div class="container-narrow">
+        <header class="page-header">
+            <h1 class="page-title">{copy.title}</h1>
+        </header>
+        <div class="prose">
+            {MiscContent ? <MiscContent /> : <p>Loading misc...</p>}
+        </div>
+    </div>
+</BaseLayout>

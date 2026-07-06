@@ -2,43 +2,43 @@ import type { PagesConfig } from "../types";
 
 export const PAGES: PagesConfig = {
     home: {
-        title: "About Me",
-        subtitle: "",
+        title: "Shaowen Wang",
+        subtitle: "Large language models, efficient learning, and the mechanics of data.",
         isActive: true,
     },
     blog: {
         title: "Blog",
-        subtitle: "Thoughts on physics, philosophy, and music.",
-        isActive: true,
+        subtitle: "Notes and essays.",
+        isActive: false,
     },
     publications: {
         title: "Publications",
-        subtitle: "A collection of research papers and scientific articles.",
+        subtitle: "Selected papers and preprints.",
         isActive: true,
     },
     talks: {
         title: "Talks & Presentations",
-        subtitle: "Public lectures, colloquia, and conference presentations.",
-        isActive: true,
+        subtitle: "Talks, posters, and presentations.",
+        isActive: false,
     },
     projects: {
-        title: "Code & Projects",
-        subtitle: "Open source contributions and technological experiments.",
+        title: "Research Threads",
+        subtitle: "The questions that organize my current work.",
         isActive: true,
     },
     teaching: {
         title: "Teaching",
-        subtitle: "Academic courses and educational materials.",
-        isActive: true,
+        subtitle: "Courses and teaching materials.",
+        isActive: false,
     },
     tags: {
         title: "Tags",
         subtitle: "Explore content by topic.",
-        isActive: true,
+        isActive: false,
     },
     cv: {
         title: "Curriculum Vitae",
-        subtitle: "Academic and professional history.",
+        subtitle: "Education, research internships, and technical skills.",
         isActive: true,
     },
 };

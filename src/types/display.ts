@@ -18,6 +18,7 @@ export interface ListingItem {
     tags: string[];
     externalUrl?: string;
     image?: string;
+    intro?: string;
 }
 
 export interface DetailItem extends ListingItem {

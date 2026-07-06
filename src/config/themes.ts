@@ -3,6 +3,24 @@ import type { Theme, ThemeColors, ThemeName } from "../types/themes";
 export { type Theme, type ThemeName, type ThemeColors };
 
 export const THEMES: Record<string, Theme> = {
+    light_research: {
+        background: "#fbfbf7",
+        foreground: "#17201d",
+        accent: "#0f766e",
+        muted: "#6d766f",
+        border: "#d8ded6",
+        surface: "#f3f5ee",
+        isDark: false,
+    },
+    dark_research: {
+        background: "#111816",
+        foreground: "#edf2ee",
+        accent: "#7dd3c7",
+        muted: "#7f8e88",
+        border: "#2b3834",
+        surface: "#17211e",
+        isDark: true,
+    },
     light_default: {
         background: "#f9fafb",
         foreground: "#111827",

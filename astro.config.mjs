@@ -11,6 +11,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
+    smartypants: false,
   },
   build: {
     inlineStylesheets: 'always'
@@ -18,7 +19,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://rubzip.github.io',
-  base: '/academic-portfolio-astro',
+  site: 'https://outsider565.github.io',
   integrations: [sitemap()],
 });

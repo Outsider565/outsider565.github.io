@@ -11,9 +11,24 @@ interface Props {
     extraInput?: string;
     tags?: string[];
     externalUrl?: string;
+    intro?: string;
+    introLabel?: string;
+    externalLabel?: string;
 }
 
-const { title, href, description, date, authors, extraInput, tags, externalUrl } = Astro.props;
+const {
+    title,
+    href,
+    description,
+    date,
+    authors,
+    extraInput,
+    tags,
+    externalUrl,
+    intro,
+    introLabel = "Short introduction",
+    externalLabel = "View",
+} = Astro.props;
 ---
 
 <article class="card">
@@ -52,13 +67,21 @@ const { title, href, description, date, authors, extraInput, tags, externalUrl }
         }
 
         {description && <p class="card-desc">{description}</p>}
+
+        {intro && (
+            <details class="paper-summary">
+                <summary>{introLabel}</summary>
+                <p>{intro}</p>
+            </details>
+        )}
     </div>
 
     {
         externalUrl && (
             <div class="flex-shrink-0">
                 <a href={externalUrl} target="_blank" rel="noopener noreferrer" class="card-link">
-                    View
+                    <Icon name="ExternalLink" size={16} />
+                    {externalLabel}
                 </a>
             </div>
         )

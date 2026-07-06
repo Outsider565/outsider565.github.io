@@ -1,11 +1,11 @@
 import type { SiteConfig, ThemeConfig, SettingsConfig, UmamiAnalyticsConfig, AnalyticsConfig } from "../types";
 
 export const SITE: SiteConfig = {
-    website: "https://shannon.github.io/academic-portfolio-astro/",
-    author: "Claude Shannon",
-    desc: "Personal academic portfolio and blog of Claude Shannon, Father of Information Theory.",
-    title: "Claude Shannon",
-    ogImage: "shannon.webp",
+    website: "https://outsider565.github.io/",
+    author: "Shaowen Wang",
+    desc: "Research portfolio of Shaowen Wang, a Ph.D. student at Tsinghua University working on large language models, efficient architectures, optimization, and scaling laws.",
+    title: "Shaowen Wang",
+    ogImage: "shaowen-avatar-forbidden-city.jpg",
     postPerPage: 5,
     favicon: "/favicon.svg",
     lang: "en",
@@ -13,14 +13,14 @@ export const SITE: SiteConfig = {
 
 export const THEME_CONFIG: ThemeConfig = {
     lightAndDark: true,
-    themeLight: "light_default",
-    themeDark: "dark_notepad",
+    themeLight: "light_research",
+    themeDark: "dark_research",
 };
 
 export const SETTINGS: SettingsConfig = {
-    showTagsInNavbar: true,
-    showRSSInFooter: true,
-    addDevToolsInProduction: true,
+    showTagsInNavbar: false,
+    showRSSInFooter: false,
+    addDevToolsInProduction: false,
 };
 
 const umami: UmamiAnalyticsConfig = {

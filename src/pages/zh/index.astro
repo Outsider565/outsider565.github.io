@@ -1,15 +1,14 @@
 ---
 import { getEntry, render } from "astro:content";
 import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import BaseItemCard from "../components/ui/BaseItemCard.astro";
-import { getListingItem } from "../utils/adapters";
-import { collectionPath, UI } from "../utils/i18n";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseItemCard from "../../components/ui/BaseItemCard.astro";
+import { getListingItem } from "../../utils/adapters";
+import { collectionPath, UI } from "../../utils/i18n";
 
-const lang = "en";
+const lang = "zh";
 const copy = UI[lang];
 
-// Load bio content
 const bioEntry = await getEntry("bio", lang);
 const { Content: BioContent } = bioEntry
 	? await render(bioEntry)
@@ -26,20 +25,12 @@ const selectedPublications = publications
 
 <BaseLayout title={copy.pages.home.title} lang={lang}>
 	<div class="container-narrow">
-		{
-			(copy.pages.home.title || copy.pages.home.subtitle) && (
-				<header class="page-header">
-					{copy.pages.home.title && (
-						<h1 class="page-title">{copy.pages.home.title}</h1>
-					)}
-					{copy.pages.home.subtitle && (
-						<p class="hero-tagline">{copy.pages.home.subtitle}</p>
-					)}
-				</header>
-			)
-		}
+		<header class="page-header">
+			<h1 class="page-title">{copy.pages.home.title}</h1>
+			<p class="hero-tagline">{copy.pages.home.subtitle}</p>
+		</header>
 		<div class="prose">
-			{BioContent ? <BioContent /> : <p>Loading bio...</p>}
+			{BioContent ? <BioContent /> : <p>正在加载...</p>}
 		</div>
 		{
 			selectedPublications.length > 0 && (

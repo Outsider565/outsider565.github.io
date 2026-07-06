@@ -6,19 +6,21 @@ import Tag from "../components/ui/Tag.astro";
 import Icon from "../components/ui/Icon.astro";
 import { getDetailItem } from "../utils/adapters";
 import { SITE } from "../config";
+import { UI, type Lang } from "../utils/i18n";
 
 interface Props {
-    collection: "publications" | "talks" | "projects" | "posts" | "teaching";
+    collection: "publications";
     id: string;
+    lang?: Lang;
 }
 
-const { collection, id } = Astro.props;
+const { collection, id, lang = "en" } = Astro.props;
 const entry = (await getEntry(collection, id)) as any;
 
 if (!entry) return Astro.redirect("/404");
 
 const { Content } = await render(entry);
-const detail = getDetailItem(entry, collection);
+const detail = getDetailItem(entry, collection, lang);
 
 const meta = [];
 if (detail.date) meta.push({ label: "Date", value: detail.date, icon: "Calendar" });
@@ -29,16 +31,18 @@ if (detail.extraInput) {
     meta.push({ label, value: detail.extraInput, icon });
 }
 
-const description = entry.data.description || detail.description || SITE.desc;
+const description = detail.description || SITE.desc;
 const ogImage = entry.data.image || SITE.ogImage;
+const backLabel = UI[lang].labels.back.publications;
 ---
 
-<BaseLayout title={detail.title} description={description} ogImage={ogImage} ogType="article">
+<BaseLayout title={detail.title} description={description} ogImage={ogImage} ogType="article" lang={lang}>
     <div class="flex justify-between items-center mb-4">
-        <BackLink href={detail.backHref} label={collection} />
+        <BackLink href={detail.backHref} label={backLabel} />
         {detail.externalUrl && (
-            <a href={detail.externalUrl} target="_blank" rel="noopener noreferrer" class="link">
-                View external
+            <a href={detail.externalUrl} target="_blank" rel="noopener noreferrer" class="paper-link">
+                <Icon name="ExternalLink" size={16} />
+                {UI[lang].labels.external}
             </a>
         )}
     </div>
@@ -63,6 +67,13 @@ const ogImage = entry.data.image || SITE.ogImage;
                     <Tag name={tag} size="sm" />
                 ))}
             </div>
+        )}
+
+        {detail.intro && (
+            <details class="paper-summary detail-summary" open>
+                <summary>{UI[lang].labels.summary}</summary>
+                <p>{detail.intro}</p>
+            </details>
         )}
 
         <div class="prose">
