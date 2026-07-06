@@ -19,7 +19,7 @@ wechat: "ShaowenWang-Shawn"
 
 起点是一套"学习即压缩"的理论——一个信息论框架，从第一性原理推导出 scaling laws、知识获取规律和 hallucination 的成因。后续工作逐步将这种理解转化为设计：
 
-弄懂压缩如何改变 scaling 行为，催生了 **DLCM**——一种 concept-level 架构，附带首个 compression-aware scaling law，指导固定 FLOPs 下的算力分配。弄懂注意力头各自承担的功能角色，催生了 **AdaRoPE**——为长上下文量身定制的 head-specific 位置编码。弄懂权重共享网络中残差更新的相关结构，催生了 looped Transformer 的 scaling rules，让训练更稳定、超参数可在不同循环次数间直接迁移。弄懂梯度对齐的规律，催生了 **LoRA-GA** 的初始化方法，大幅弥合 LoRA 与全量微调之间的收敛差距。
+弄懂压缩如何改变 scaling 行为，催生了 **DLCM**——一种 concept-level 架构，附带首个 compression-aware scaling law，指导固定 FLOPs 下的算力分配。弄懂注意力头各自承担的功能角色，催生了 **AdaRoPE**——为长上下文量身定制的 head-specific 位置编码。弄懂权重共享网络中残差更新的相关结构，催生了 looped Transformer 的 scaling rules，让训练更稳定、超参数可在不同循环次数间直接迁移。
 
 详见下方论文。
 
