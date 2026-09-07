@@ -1,0 +1,13 @@
+---
+title: "SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers"
+selected: true
+author: "Shaowen Wang, Ge Zhang, Kairong Luo, Yuhao Wu, Shaofan Liu, Jiaheng Liu, Wenhao Huang, Shen Yan, Jian Li"
+date: "2026-09-01"
+journal: "arXiv"
+external_url: "https://arxiv.org/abs/2609.01343"
+description: "Tests whether depth reuse improves MoE Transformers under matched per-token FLOPs, parameter count, and KV cache. Scaling to 54B parameters yields 6.8–18.0% training-FLOP savings on the fitted compute-optimal frontier."
+description_zh: "让共享层再算一遍，能否在相同预算下做得更好？SMELT 同时匹配每 token FLOPs、非嵌入层总参数量与 KV cache，将中间一半层循环两次；扩展至 54B 参数后，拟合的计算最优前沿显示可节省 6.8%–18.0% 的训练 FLOPs。"
+abstract: "Looped Transformers increase effective depth by iterating a shared block of layers, but most evaluations compare at fixed model size, conflating architectural advantage with extra FLOPs. We study looping on Mixture-of-Experts Transformers while closely matching per-token FLOPs, total non-embedding parameters, and KV cache. Through a series of ablations, we arrive at a recipe we call SMELT (Sparse MoE Transformer, middle layers Loop Twice), which loops the middle half of layers twice while matching the unlooped Baseline on all three budgets. We scale SMELT across four sizes up to 54B non-embedding parameters and fit a separate Chinchilla-style scaling law for each architecture. SMELT's loss drops faster with compute, saving 6.8--18.0\\% of training FLOPs on the compute-optimal frontier. The advantage transfers to downstream benchmarks beyond what validation loss predicts, is largest on Code, and grows with sample length and the number of in-context examples. Mechanistic analysis shows that the second visit reduces the attention sink and redirects mass toward content-relevant tokens, an inductive bias that may underlie the observed performance gains. These results show that looping can improve Transformers even under budget matching, offering a practical recipe that turns depth reuse into measurable gains."
+abstract_zh: "Looped Transformer 通过重复执行一组共享层来增加有效深度，但现有评估大多固定模型规模进行比较，难以区分架构本身的优势与额外 FLOPs 带来的收益。本文在混合专家（MoE）Transformer 上研究循环结构，同时尽可能匹配每 token FLOPs、非嵌入层总参数量和 KV cache。通过一系列消融实验，我们得到 SMELT 配方（Sparse MoE Transformer, middle layers Loop Twice）：将中间一半的层循环执行两次，并在三项预算上与非循环基线保持匹配。我们将 SMELT 扩展到四个模型规模，最大非嵌入层参数量达到 54B，并分别为两种架构拟合 Chinchilla 式缩放定律。SMELT 的损失随计算量增长下降得更快，在计算最优前沿上可节省 6.8%–18.0% 的训练 FLOPs。其优势还延伸到下游任务，超过验证损失差异所能解释的部分；代码领域的收益最大，并随样本长度和上下文示例数量增加而扩大。机制分析表明，第二次执行会减弱 attention sink，并将更多注意力转向与内容相关的 token，这种归纳偏置可能与观察到的性能提升有关。这些结果表明，即使在预算匹配的条件下，循环结构仍能提升 Transformer，并为利用深度复用获得可量化收益提供了一套实用配方。"
+tags: ["Looped Transformers", "Mixture of Experts", "Scaling Laws"]
+---

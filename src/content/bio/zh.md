@@ -19,7 +19,9 @@ wechat: "ShaowenWang-Shawn"
 
 起点是一套"学习即压缩"的理论——一个信息论框架，从第一性原理推导出 scaling laws、知识获取规律和 hallucination 的成因。后续工作逐步将这种理解转化为设计：
 
-弄懂压缩如何改变 scaling 行为，催生了 **DLCM**——一种 concept-level 架构，附带首个 compression-aware scaling law，指导固定 FLOPs 下的算力分配。弄懂注意力头各自承担的功能角色，催生了 **AdaRoPE**——为长上下文量身定制的 head-specific 位置编码。弄懂权重共享网络中残差更新的相关结构，催生了 looped Transformer 的 scaling rules，让训练更稳定、超参数可在不同循环次数间直接迁移。
+弄懂压缩如何改变 scaling 行为，催生了 **DLCM**——一种 concept-level 架构，附带首个 compression-aware scaling law，指导固定 FLOPs 下的算力分配。弄懂注意力头各自承担的功能角色，催生了 **AdaRoPE**——为长上下文量身定制的 head-specific 位置编码。
+
+在循环 Transformer 这条线上，理解权重共享网络中残差更新的相关结构，让我们找到了稳定训练、跨循环次数迁移超参数的缩放规则。**SMELT** 则回答了另一个关键问题：在相同的资源预算下，重复利用已有层能否提升模型能力，这种收益又如何随规模变化？我们同时匹配每 token FLOPs、非嵌入层总参数量和 KV cache，分离循环结构本身的收益，并得到一套实用的 MoE 循环配方。
 
 详见下方论文。
 

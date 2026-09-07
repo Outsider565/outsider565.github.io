@@ -15,7 +15,11 @@ I work on large language model pre-training. Every design decision in pre-traini
 ## Research Focus:
 
 My work follows a single loop: build a quantitative understanding of how models turn data and compute into capability, derive design decisions from it, and verify that they hold as scale grows.
-The foundation is a theory of learning as compression: an information-theoretic framework that explains scaling laws, the dynamics of knowledge acquisition, and hallucination from first principles. The rest of my work turns this kind of analysis into design. Understanding how compression changes scaling behavior yields DLCM, a concept-level architecture with the first compression-aware scaling law for allocating compute under fixed FLOPs. Understanding the functional roles of attention heads yields AdaRoPE, head-specific positional encodings for long context. Understanding correlated residual updates in weight-tied networks yields scaling rules under which looped Transformers train stably and hyperparameters transfer across loop counts without retuning. You can read my papers below.
+The foundation is a theory of learning as compression: an information-theoretic framework that explains scaling laws, the dynamics of knowledge acquisition, and hallucination from first principles. The rest of my work turns this kind of analysis into design. Understanding how compression changes scaling behavior yields DLCM, a concept-level architecture with the first compression-aware scaling law for allocating compute under fixed FLOPs. Understanding the functional roles of attention heads yields AdaRoPE, head-specific positional encodings for long context.
+
+For looped Transformers, understanding correlated residual updates in weight-tied networks yields scaling rules for stable training and hyperparameter transfer across loop counts without retuning. **SMELT** addresses a complementary question: whether reusing depth improves capability under matched resource budgets, and how that advantage scales. By closely matching per-token FLOPs, total non-embedding parameters, and KV cache, we isolate the benefits of looping and identify a practical MoE recipe.
+
+You can read my papers below.
 
 ## Current Work:
 
