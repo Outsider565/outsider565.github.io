@@ -6,21 +6,20 @@ import Tag from "../components/ui/Tag.astro";
 import Icon from "../components/ui/Icon.astro";
 import { getDetailItem } from "../utils/adapters";
 import { SITE } from "../config";
-import { UI, type Lang } from "../utils/i18n";
+import { UI } from "../config/ui";
 
 interface Props {
     collection: "publications";
     id: string;
-    lang?: Lang;
 }
 
-const { collection, id, lang = "en" } = Astro.props;
+const { collection, id } = Astro.props;
 const entry = (await getEntry(collection, id)) as any;
 
 if (!entry) return Astro.redirect("/404");
 
 const { Content } = await render(entry);
-const detail = getDetailItem(entry, collection, lang);
+const detail = getDetailItem(entry, collection);
 
 const meta = [];
 if (detail.date) meta.push({ label: "Date", value: detail.date, icon: "Calendar" });
@@ -33,16 +32,16 @@ if (detail.extraInput) {
 
 const description = detail.description || SITE.desc;
 const ogImage = entry.data.image || SITE.ogImage;
-const backLabel = UI[lang].labels.back.publications;
+const backLabel = UI.labels.back.publications;
 ---
 
-<BaseLayout title={detail.title} description={description} ogImage={ogImage} ogType="article" lang={lang}>
+<BaseLayout title={detail.title} description={description} ogImage={ogImage} ogType="article">
     <div class="flex justify-between items-center mb-4">
         <BackLink href={detail.backHref} label={backLabel} />
         {detail.externalUrl && (
             <a href={detail.externalUrl} target="_blank" rel="noopener noreferrer" class="paper-link">
                 <Icon name="ExternalLink" size={16} />
-                {UI[lang].labels.external}
+                {UI.labels.external}
             </a>
         )}
     </div>
@@ -71,7 +70,7 @@ const backLabel = UI[lang].labels.back.publications;
 
         {detail.intro && (
             <details class="paper-summary detail-summary" open>
-                <summary>{UI[lang].labels.summary}</summary>
+                <summary>{UI.labels.summary}</summary>
                 <p>{detail.intro}</p>
             </details>
         )}

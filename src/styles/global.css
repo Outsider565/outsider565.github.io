@@ -605,25 +605,6 @@ a:hover,
     flex-wrap: wrap;
 }
 
-.language-switch {
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 0.3rem 0.65rem;
-    font-size: 0.82rem;
-    font-weight: 700;
-    line-height: 1;
-    text-decoration: none;
-    color: var(--foreground);
-    background: var(--surface);
-    white-space: nowrap;
-    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-}
-
-.language-switch:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-}
-
 .nav-link {
     font-size: 0.9rem;
     font-weight: 600;

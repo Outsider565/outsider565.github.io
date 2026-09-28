@@ -1,6 +1,5 @@
 ---
 name: "Shaowen Wang"
-lang: "en"
 avatar: "shaowen-avatar-forbidden-city.jpg"
 shortBio: "CS Ph.D. Student"
 institution: "Tsinghua University, Beijing"

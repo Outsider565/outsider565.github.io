@@ -4,13 +4,12 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BaseItemCard from "../components/ui/BaseItemCard.astro";
 import { getListingItem } from "../utils/adapters";
-import { collectionPath, UI } from "../utils/i18n";
+import { UI } from "../config/ui";
 
-const lang = "en";
-const copy = UI[lang];
+const copy = UI;
 
 // Load bio content
-const bioEntry = await getEntry("bio", lang);
+const bioEntry = await getEntry("bio", "en");
 const { Content: BioContent } = bioEntry
 	? await render(bioEntry)
 	: { Content: null };
@@ -24,7 +23,7 @@ const selectedPublications = publications
 	});
 ---
 
-<BaseLayout title={copy.pages.home.title} lang={lang}>
+<BaseLayout title={copy.pages.home.title}>
 	<div class="container-narrow">
 		{
 			(copy.pages.home.title || copy.pages.home.subtitle) && (
@@ -49,11 +48,11 @@ const selectedPublications = publications
 					</header>
 					<div class="item-list">
 						{selectedPublications.map((entry) => {
-							const item = getListingItem(entry, lang);
+							const item = getListingItem(entry);
 							return (
 								<BaseItemCard
 									{...item}
-									href={collectionPath("publications", entry.id, lang)}
+									href={`/publications/${entry.id}`}
 									introLabel={copy.labels.summary}
 									externalLabel={copy.labels.external}
 								/>

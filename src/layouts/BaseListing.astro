@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BaseItemCard from "../components/ui/BaseItemCard.astro";
 import { getListingItem } from "../utils/adapters";
-import { collectionPath, UI, type Lang } from "../utils/i18n";
+import { UI } from "../config/ui";
 
 interface Props {
     collection: "publications" | "all";
@@ -11,10 +11,9 @@ interface Props {
     subtitle?: string;
     entries?: any[];
     page?: any;
-    lang?: Lang;
 }
 
-const { collection, title, subtitle, entries: manualEntries, page, lang = "en" } = Astro.props;
+const { collection, title, subtitle, entries: manualEntries, page } = Astro.props;
 
 let entries = manualEntries || (collection !== "all" ? await getCollection(collection as any) : []);
 if (page) entries = page.data;
@@ -26,7 +25,7 @@ const sortedEntries = entries.sort((a: any, b: any) => {
 });
 ---
 
-<BaseLayout title={title} lang={lang}>
+<BaseLayout title={title}>
     {(title || subtitle) && (
         <header class="page-header">
             {title && <h1 class="page-title">{title}</h1>}
@@ -36,14 +35,14 @@ const sortedEntries = entries.sort((a: any, b: any) => {
 
     <section class="item-list">
         {sortedEntries.map((entry: any) => {
-            const item = getListingItem(entry, lang);
-            const href = collection === "all" ? "#" : collectionPath(collection, entry.id, lang);
+            const item = getListingItem(entry);
+            const href = collection === "all" ? "#" : `/${collection}/${entry.id}`;
             return (
                 <BaseItemCard
                     {...item}
                     href={href}
-                    introLabel={UI[lang].labels.summary}
-                    externalLabel={UI[lang].labels.external}
+                    introLabel={UI.labels.summary}
+                    externalLabel={UI.labels.external}
                 />
             );
         })}

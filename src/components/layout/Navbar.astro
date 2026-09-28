@@ -1,11 +1,8 @@
 ---
-import { getLangFromPath, navLinks, stripLang, switchLangPath, UI, type Lang } from "../../utils/i18n";
+import { NAV_LINKS } from "../../config";
 
 const currentPath = Astro.url.pathname;
-const lang = getLangFromPath(currentPath);
-const targetLang: Lang = lang === "en" ? "zh" : "en";
-const links = navLinks(lang);
-const strippedPath = stripLang(currentPath);
+const links = NAV_LINKS.filter((link) => link.isActive);
 ---
 
 <nav class="navbar">
@@ -16,9 +13,9 @@ const strippedPath = stripLang(currentPath);
                     <a
                         href={link.href}
                         class={`nav-link ${
-                            strippedPath === stripLang(link.href) ||
-                            (stripLang(link.href) !== "/" &&
-                                strippedPath.startsWith(stripLang(link.href)))
+                            currentPath === link.href ||
+                            (link.href !== "/" &&
+                                currentPath.startsWith(`${link.href}/`))
                                 ? "active"
                                 : "inactive"
                         }`}
@@ -30,7 +27,4 @@ const strippedPath = stripLang(currentPath);
             ))
         }
     </ul>
-    <a class="language-switch" href={switchLangPath(currentPath, targetLang)} aria-label={`Switch to ${UI[targetLang].languageName}`}>
-        {UI[lang].languageSwitch}
-    </a>
 </nav>

@@ -1,18 +1,10 @@
 ---
 import { SITE, SOCIALS, SOCIAL_ICONS } from "../../config";
-import { getCollection } from "astro:content";
+import { getEntry } from "astro:content";
 import Icon from "../ui/Icon.astro";
 import { Image } from 'astro:assets';
-import type { Lang } from "../../utils/i18n";
-
-interface Props {
-    lang?: Lang;
-}
-
-const { lang = "en" } = Astro.props;
 const activeSocials = SOCIALS.filter((s) => s.isActive);
-const bioCollection = await getCollection("bio");
-const bio = bioCollection.find((entry) => entry.data.lang === lang)?.data ?? bioCollection[0]?.data;
+const bio = (await getEntry("bio", "en"))?.data;
 ---
 
 <aside class="sidebar max-lg:flex-row max-lg:flex-wrap max-lg:gap-3 max-md:gap-2">
@@ -41,9 +33,9 @@ const bio = bioCollection.find((entry) => entry.data.lang === lang)?.data ?? bio
                 </p>
             )}
             {(bio?.email || bio?.wechat) && (
-                <div class="sidebar-contact" aria-label={lang === "zh" ? "联系方式" : "Contact"}>
+                <div class="sidebar-contact" aria-label="Contact">
                     <hr class="sidebar-divider" />
-                    <p class="sidebar-contact-title">{lang === "zh" ? "联系方式" : "Contact"}</p>
+                    <p class="sidebar-contact-title">Contact</p>
                     {bio?.email && (
                         <a href={`mailto:${bio.email}`} class="sidebar-contact-link">
                             {bio.email}
