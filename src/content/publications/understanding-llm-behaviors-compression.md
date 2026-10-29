@@ -1,7 +1,7 @@
 ---
 title: "Understanding LLM Behaviors via Compression: Data Generation, Knowledge Acquisition and Scaling Laws"
 selected: true
-author: "Zhixuan Pan, Shaowen Wang, Jian Li"
+author: "Zhixuan Pan, Shaowen Wang, Pengfei Liao, Jian Li"
 date: "2025-05-01"
 journal: "NeurIPS 2025"
 external_url: "https://arxiv.org/abs/2504.09597"
