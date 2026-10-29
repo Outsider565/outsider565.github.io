@@ -2,7 +2,9 @@
 
 English-only Astro/Tailwind personal academic homepage for [outsider565.github.io](https://outsider565.github.io).
 
-The site includes About, Publications, and Misc. All 13 publications retain their English descriptions and abstracts. The former `/zh/` pages and language switch have been removed.
+The site includes About, Publications, and Misc. All 14 publications retain their English descriptions and abstracts. The former `/zh/` pages and language switch have been removed.
+
+RLPgR, published in EMNLP 2026 Findings, was added on October 29, 2026 with the official author list, abstract, and ACL Anthology link.
 
 English page labels live in `src/config/ui.ts`, navigation in `src/config/navigation.ts`, and content in `src/content/`.
 
